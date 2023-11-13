@@ -2,7 +2,7 @@
 @use '../../styles/tools';
 
 // Defaults
-$breadcrumbs-density: ('default': 0, 'comfortable': -1, 'compact': -2) !default;
+$breadcrumbs-density: ('default': 0, 'comfortable': -1, 'compact': -2, 'minimal': -3) !default;
 $breadcrumbs-divider-padding: 0 8px !default;
 $breadcrumbs-item-disabled-opacity: var(--v-disabled-opacity) !default;
 $breadcrumbs-item-icon-font-size: tools.map-deep-get(settings.$typography, 'body-1', 'size') !default;

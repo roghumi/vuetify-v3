@@ -108,7 +108,7 @@ $list-item-title-text-transform: none !default;
 $list-item-title-word-break: normal !default;
 $list-item-title-word-wrap: break-word !default;
 
-$list-density: ('default': 0, 'comfortable': -1, 'compact': -2) !default;
+$list-density: ('default': 0, 'comfortable': -1, 'compact': -2, 'minimal': -3) !default;
 
 $list-border: (
   $list-border-color,

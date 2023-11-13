@@ -51,9 +51,9 @@ $button-stacked-width-ratio: 1 !default;
 $button-rounded-border-radius: map.get(settings.$rounded, 'xl') !default;
 $button-white-space: nowrap !default;
 
-$button-density: ('default': 0, 'comfortable': -2, 'compact': -3) !default;
-$button-stacked-density: ('default': 0, 'comfortable': -4, 'compact': -6) !default;
-$button-icon-density: ('default': 3, 'comfortable': 0, 'compact': -2) !default;
+$button-density: ('default': 0, 'comfortable': -2, 'compact': -3, 'minimal': -4) !default;
+$button-stacked-density: ('default': 0, 'comfortable': -4, 'compact': -6, 'minimal': -8) !default;
+$button-icon-density: ('default': 3, 'comfortable': 0, 'compact': -2, 'minimal': -4) !default;
 
 $button-border: (
   $button-border-color,

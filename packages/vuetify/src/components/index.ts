@@ -87,3 +87,5 @@ export * from './VValidation'
 export * from './VVirtualScroll'
 export * from './VWindow'
 export * from './transitions'
+
+export * from './VSchemaRenderer'
