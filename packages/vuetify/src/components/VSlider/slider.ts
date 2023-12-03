@@ -52,8 +52,7 @@ type SliderProvide = {
   parsedTicks: Ref<Tick[]>
   hasLabels: Ref<boolean>
   isReversed: Ref<boolean>
-  isNotVerticalAndReversed: Ref<boolean>
-  horizontalDirection: Ref<'ltr' | 'rtl'>
+  indexFromEnd: Ref<boolean>
 }
 
 export const VSliderSymbol: InjectionKey<SliderProvide> = Symbol.for('vuetify:v-slider')
@@ -135,6 +134,10 @@ export const makeSliderProps = propsFactory({
   ...makeElevationProps({
     elevation: 2,
   }),
+  ripple: {
+    type: Boolean,
+    default: true,
+  },
 }, 'Slider')
 
 type SliderProps = ExtractPropTypes<ReturnType<typeof makeSliderProps>>
@@ -182,16 +185,7 @@ export const useSlider = ({
   const { isRtl } = useRtl()
   const isReversed = toRef(props, 'reverse')
   const vertical = computed(() => props.direction === 'vertical')
-  const isNotVerticalAndReversed = computed(() => vertical.value !== isReversed.value)
-  const horizontalDirection = computed(() => {
-    let hd: 'ltr' | 'rtl' = isRtl.value ? 'rtl' : 'ltr'
-
-    if (isNotVerticalAndReversed.value) {
-      hd = hd === 'rtl' ? 'ltr' : 'rtl'
-    }
-
-    return hd
-  })
+  const indexFromEnd = computed(() => vertical.value !== isReversed.value)
 
   const { min, max, step, decimals, roundValue } = steps
 
@@ -226,7 +220,7 @@ export const useSlider = ({
     // It is possible for left to be NaN, force to number
     let clickPos = Math.min(Math.max((clickOffset - trackStart - startOffset.value) / trackLength, 0), 1) || 0
 
-    if (isNotVerticalAndReversed.value || horizontalDirection.value === 'rtl') clickPos = 1 - clickPos
+    if (vertical ? indexFromEnd.value : indexFromEnd.value !== isRtl.value) clickPos = 1 - clickPos
 
     return roundValue(min.value + clickPos * (max.value - min.value))
   }
@@ -331,9 +325,8 @@ export const useSlider = ({
     direction: toRef(props, 'direction'),
     elevation: toRef(props, 'elevation'),
     hasLabels,
-    horizontalDirection,
     isReversed,
-    isNotVerticalAndReversed,
+    indexFromEnd,
     min,
     max,
     mousePressed,
