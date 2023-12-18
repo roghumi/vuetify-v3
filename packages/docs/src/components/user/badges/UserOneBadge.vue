@@ -1,14 +1,14 @@
 <template>
   <v-tooltip
-    v-if="auth.user.isAdmin"
+    v-if="auth.isOneSubscriber"
+    text="Vuetify One Subscriber"
     location="bottom"
-    text="Admin"
   >
     <template #activator="{ props: activatorProps }">
       <v-icon
         v-bind="activatorProps"
         color="primary"
-        icon="$vuetify"
+        icon="mdi-numeric-1-box"
       />
     </template>
   </v-tooltip>
