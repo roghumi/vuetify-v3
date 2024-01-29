@@ -1,6 +1,6 @@
 export default {
   badge: 'Odznak',
-  open: 'Otevřit',
+  open: 'Otevřiť',
   close: 'Zavřít',
   confirmEdit: {
     ok: 'OK',
@@ -56,6 +56,7 @@ export default {
   },
   calendar: {
     moreEvents: '{0} dalších',
+    today: 'Today',
   },
   input: {
     clear: 'Vymazat {0}',
