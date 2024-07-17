@@ -18,9 +18,9 @@ related:
 
 Get started with Vuetify, the world’s most popular Vue.js framework for building feature rich, blazing fast applications.
 
-<page-features />
+<PageFeatures />
 
-<entry />
+<VoPromotionsCardHighlight slug="vuemastery-getting-started" />
 
 ## Installation
 
@@ -44,7 +44,7 @@ yarn create vuetify
 ```
 
 ```bash [npm]
-npm create vuetify
+npm create vuetify@latest
 ```
 
 ```bash [pnpm]
@@ -82,6 +82,8 @@ cd vuetify-project
 yarn dev
 ```
 
+<VoPromotionsCardVuetify slug="vuetify-one" />
+
 ## Using Nuxt 3
 
 [Nuxt](https://nuxt.com/) is an open-source framework that has helpful features to quickly get you started with developing a full-stack Vue app, such as file-based routing, SSR and component auto-imports. Nuxt is powered by Vite, so the steps to get Vuetify working in Nuxt 3 are quite similar to the manual steps described above.
@@ -117,7 +119,7 @@ bun install
 
 :::
 
-and then install the required Vuefity modules as dependencies:
+and then install the required Vuetify modules as dependencies:
 
 ::: tabs
 
@@ -218,7 +220,6 @@ You should now have access to all Vuetify components and tools in Nuxt app.
 
 ```js
 import { createApp } from 'vue'
-import App from './App.vue'
 
 // Vuetify
 import '@mdi/font/css/materialdesignicons.css'
@@ -226,6 +227,9 @@ import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+
+// Components
+import App from './App.vue'
 
 const vuetify = createVuetify({
   components,
@@ -257,6 +261,51 @@ const vuetify = createVuetify()
 
 const app = createApp()
 app.use(vuetify).mount('#app')
+```
+
+## Using Vitepress
+
+You can use Vuetify's components in your Vitepress static site.
+
+First, add vuetify to your dependencies
+
+::: tabs
+
+```bash [yarn]
+yarn create vuetify
+```
+
+```bash [npm]
+npm create vuetify@latest
+```
+
+```bash [pnpm]
+pnpm create vuetify
+```
+
+```bash [bun]
+bun create vuetify
+```
+
+:::
+
+Then, in your `.vitepress/theme/index.ts`
+
+```ts
+import DefaultTheme from 'vitepress/theme'
+import 'vuetify/styles'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+import { createVuetify } from 'vuetify'
+
+const vuetify = createVuetify({ components, directives })
+
+export default {
+  ...DefaultTheme,
+  enhanceApp({ app }) {
+    app.use(vuetify)
+  },
+}
 ```
 
 ## Existing projects
@@ -293,13 +342,15 @@ In the file where you create the Vue application, add the following code
 
 ```js
 import { createApp } from 'vue'
-import App from './App.vue'
 
 // Vuetify
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+
+// Components
+import App from './App.vue'
 
 const vuetify = createVuetify({
   components,
@@ -376,4 +427,4 @@ The three development branches (`master`, `dev`, and `next`) are automatically p
 
 Have a question that belongs here? Tell us in our [Discord Community](https://community.vuetifyjs.com/) or create a request on our [Issue Generator](https://issues.vuetifyjs.com/).
 
-<promoted slug="vuetify-discord" />
+<PromotedPromoted slug="vuetify-discord" />
